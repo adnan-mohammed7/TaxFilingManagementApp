@@ -2,9 +2,10 @@ package com.example.taxfilemanagementapp;
 
 import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(indices = {@Index(value = "userName", unique = true)})
 public class Customer {
     @PrimaryKey(autoGenerate = true)
     public int uid;
