@@ -45,7 +45,7 @@ public class UserServices {
         }).start();
     }
 
-    public void inserAllCustomers(Customer[] customers, OperationCallback callback){
+    public void insertAllCustomers(Customer[] customers, OperationCallback callback){
         new Thread(()->{
             try{
                 userDao.insertAll(customers);
@@ -130,4 +130,77 @@ public class UserServices {
             }
         }).start();
     }
+
+    public void insertAdmin(Admin admin, OperationCallback callback){
+        try{
+            adminDao.insert(admin);
+            if(callback != null){
+                callback.onOperationCompleted();
+            }
+        }catch(Exception e){
+            if(callback != null){
+                callback.onError(e);
+            }
+        }
+    }
+
+    public void getAllAdmins(Consumer<List<Admin>> onResult){
+        try{
+            List<Admin> result = adminDao.getAllAdmins();
+            if(onResult != null){
+                onResult.accept(result);
+            }
+        }catch(Exception e){
+
+        }
+    }
+
+    public void getAdminById(int id, Consumer<Admin> onResult){
+        try{
+            Admin result = adminDao.getAdminById(id);
+            if(onResult != null){
+                onResult.accept(result);
+            }
+        }catch(Exception e){
+
+        }
+    }
+
+    public void getAdminByUsername(String name, Consumer<Admin> onResult){
+        try{
+            Admin result = adminDao.getAdminByUsername(name);
+            if(onResult != null){
+                onResult.accept(result);
+            }
+        }catch(Exception e){
+
+        }
+    }
+
+    public void updateAdmin(Admin admin, OperationCallback callback){
+        try{
+            adminDao.update(admin);
+            if(callback != null){
+                callback.onOperationCompleted();
+            }
+        }catch(Exception e){
+            if(callback != null){
+                callback.onError(e);
+            }
+        }
+    }
+
+    public void deleteAdmin(Admin admin, OperationCallback callback){
+        try{
+            adminDao.delete(admin);
+            if(callback != null){
+                callback.onOperationCompleted();
+            }
+        }catch(Exception e){
+            if(callback != null){
+                callback.onError(e);
+            }
+        }
+    }
+
 }
