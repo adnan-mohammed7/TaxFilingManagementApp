@@ -22,7 +22,7 @@ public interface UserDao {
     @Query("SELECT * FROM Customer WHERE uid = :userid")
     Customer getCustomerById(int userid);
 
-    @Query("SELECT * FROM Customer WHERE userName = :name")
+    @Query("SELECT * FROM Customer WHERE LOWER(userName) = LOWER(:name)")
     Customer getCustomerByUsername(String name);
 
     @Update
