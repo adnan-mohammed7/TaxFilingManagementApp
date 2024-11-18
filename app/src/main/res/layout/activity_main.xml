@@ -32,6 +32,12 @@
         android:inputType="textPassword"
         tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/userSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/admin" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,4 +63,6 @@
             tools:ignore="ButtonStyle,VisualLintButtonSize" />
 
     </LinearLayout>
+
+
 </LinearLayout>

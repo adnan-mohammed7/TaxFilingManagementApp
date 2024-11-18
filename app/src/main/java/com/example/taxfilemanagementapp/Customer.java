@@ -20,5 +20,14 @@ public class Customer {
     @Embedded
     public Address address;
 
+    public Customer(String name, String userName, String email, String phone, String companyTitle, String website, Address address){
+        this.name = name;
+        this.userName = userName;
+        this.email = email;
+        this.phone = phone;
+        this.companyTitle = companyTitle;
+        this.website = website;
+        this.address = address;
+    }
 
 }
