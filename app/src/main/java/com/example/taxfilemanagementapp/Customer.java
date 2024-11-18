@@ -13,13 +13,12 @@ public class Customer {
     public String name;
     public String userName;
     public String email;
+    public String phone;
+    public String companyTitle;
+    public String website;
 
     @Embedded
     public Address address;
 
-    public String phone;
-    public String website;
 
-    @Embedded
-    public Company company;
 }

@@ -3,4 +3,15 @@
     <string name="welcome_image_viewer">Welcome Image viewer</string>
     <string name="signup">Signup</string>
     <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="website">Website</string>
+    <string name="address">Address</string>
+    <string name="street">Street</string>
+    <string name="company_name">Company Name</string>
+    <string name="suite">Suite</string>
+    <string name="city">City</string>
+    <string name="postal_code">Postal Code</string>
 </resources>
