@@ -15,20 +15,22 @@
         android:contentDescription="@string/welcome_image_viewer" />
 
     <EditText
-        android:id="@+id/userEmailField"
+        android:id="@+id/userNameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:autofillHints=""
+        android:hint="@string/username"
         android:inputType="textEmailAddress"
         tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/passwordBtn"
+        android:id="@+id/passwordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:autofillHints=""
+        android:hint="@string/password"
         android:inputType="textPassword"
         tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
