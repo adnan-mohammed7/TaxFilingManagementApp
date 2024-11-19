@@ -18,4 +18,7 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="province">Province</string>
+    <string name="logout">Logout</string>
+    <string name="back_btn">Back Btn</string>
+    <string name="back_to_login_page_btn">back to login page btn</string>
 </resources>

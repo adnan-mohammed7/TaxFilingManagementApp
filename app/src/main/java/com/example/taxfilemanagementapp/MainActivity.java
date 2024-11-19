@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         userSwitch = findViewById(R.id.userSwitch);
         userNameField = findViewById(R.id.userNameField);
         passwordField = findViewById(R.id.passwordField);
-        printCustomer();
+//        printCustomer();
     }
 
     public void handleSignup(View view) {
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
             userServices.getAdminByUsername(username, admin ->{
                 if(admin != null){
                     if(password.equals(admin.password)){
-                        //Start home activity for admin
-                        System.out.println("LoggedIn");
+                        Intent intent = new Intent(this, AdminHomeActivity.class);
+                        startActivity(intent);
                     }else{
                         runOnUiThread(()->Toast.makeText(this, "Incorrect Password", Toast.LENGTH_SHORT).show());
                     }
@@ -128,5 +128,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
-
 }

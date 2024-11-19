@@ -6,27 +6,35 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/home_name"
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:text="" />
 
     <TextView
-        android:id="@+id/home_phone"
+        android:id="@+id/item_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:text="" />
 
     <TextView
-        android:id="@+id/home_city"
+        android:id="@+id/item_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:text="" />
 
     <TextView
-        android:id="@+id/home_status"
+        android:id="@+id/item_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:text="" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
