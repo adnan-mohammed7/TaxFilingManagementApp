@@ -36,4 +36,39 @@ public class Customer implements Serializable{
         this.address = address;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setCompanyTitle(String companyTitle) {
+        this.companyTitle = companyTitle;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

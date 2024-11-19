@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
             userServices.getCustomerByUsername(username, customer ->{
                 if(customer != null){
                     if(password.equals(customer.password)){
-
+                        Intent intent = new Intent(this, CustomerHomeActivity.class);
+                        intent.putExtra("username", customer.userName);
+                        startActivity(intent);
                     }else{
                         runOnUiThread(()->Toast.makeText(this, "Incorrect Password", Toast.LENGTH_SHORT).show());
                     }
