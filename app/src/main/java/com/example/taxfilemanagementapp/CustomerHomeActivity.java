@@ -34,7 +34,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
     TextView emailField;
     TextView statusView;
 
-    String name, userName, password, email, phone, company, website, suite, street, city, province, postal, status;
+    String name, userName, password, phone, company, website, suite, street, city, province, postal, status;
     UserServices userServices;
     Customer loggedInCustomer;
 
@@ -103,7 +103,6 @@ public class CustomerHomeActivity extends AppCompatActivity {
             loggedInCustomer.setWebsite(website);
             loggedInCustomer.setAddress(address);
 
-            System.out.println("New: " + loggedInCustomer.phone);
             userServices.updateCustomer(loggedInCustomer, new UserServices.OperationCallback() {
                 @Override
                 public void onOperationCompleted() {

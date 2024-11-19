@@ -1,11 +1,14 @@
 package com.example.taxfilemanagementapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-
     private List<Customer> data;
+    Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameView;
@@ -32,8 +35,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
 
-    public RecyclerAdapter(List<Customer> data) {
+    public RecyclerAdapter(List<Customer> data, Context context) {
         this.data = data;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -77,6 +81,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 holder.itemView.setBackgroundColor(Color.WHITE);
                 break;
         }
+
+        holder.itemView.setOnClickListener(e->{
+            Intent intent = new Intent(context, CustomerDetailActivity.class);
+            intent.putExtra("username", customer.userName);
+            intent.putExtra("position", position);
+            ((AdminHomeActivity) context).startActivityForResult(intent, 1);
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -91,5 +102,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     public void removeCustomerAtPosition(int pos){
         data.remove(pos);
+    }
+
+    public void updateCustomerAtPosition(int pos, Customer customer){
+        data.set(pos, customer);
+        notifyItemChanged(pos);
     }
 }

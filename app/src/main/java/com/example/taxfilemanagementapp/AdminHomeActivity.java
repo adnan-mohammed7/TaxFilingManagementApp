@@ -45,7 +45,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         userServices.getAllCustomers(customers -> {
             runOnUiThread(()->{
-                adapter = new RecyclerAdapter(customers);
+                adapter = new RecyclerAdapter(customers, this);
                 recyclerView.setAdapter(adapter);
             });
         });
@@ -87,5 +87,17 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            userServices.getCustomerById(data.getIntExtra("id", -1), e->{
+                runOnUiThread(()->{
+                    adapter.updateCustomerAtPosition(data.getIntExtra("position", -1), e);
+                });
+            });
+        }
     }
 }
