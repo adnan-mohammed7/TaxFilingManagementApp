@@ -53,42 +53,46 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void createCustomer(View view) {
-        setValues();
+        if(checkAllFields()){
+            setValues();
 
-        Geocoder geocoder = new Geocoder(this);
+            Geocoder geocoder = new Geocoder(this);
 
-        String fullAddress = street + ", " + city + ", " + "Canada";
-        Geo geo;
-        try {
-            List<android.location.Address> addresses = geocoder.getFromLocationName(fullAddress, 1);
-            if (addresses != null && !addresses.isEmpty()) {
-                android.location.Address address = addresses.get(0);
-                geo = new Geo(address.getLatitude(), address.getLongitude());
-            } else {
-                geo = null;
+            String fullAddress = street + ", " + city + ", " + "Canada";
+            Geo geo;
+            try {
+                List<android.location.Address> addresses = geocoder.getFromLocationName(fullAddress, 1);
+                if (addresses != null && !addresses.isEmpty()) {
+                    android.location.Address address = addresses.get(0);
+                    geo = new Geo(address.getLatitude(), address.getLongitude());
+                } else {
+                    geo = null;
+                }
+
+                Address address = new Address(street, suite, city, province, postal, geo);
+
+                Customer customer = new Customer(name, userName, password, email, phone, company, website,"AWAITED", address);
+                userServices.insertCustomer(customer, new UserServices.OperationCallback() {
+                    @Override
+                    public void onOperationCompleted() {
+                        runOnUiThread(()->Toast.makeText(SignupActivity.this, "Account created!", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        runOnUiThread(()->Toast.makeText(SignupActivity.this, "Account cannot be created!", Toast.LENGTH_SHORT).show());
+                        System.out.println(e.toString());
+                    }
+                });
+            }catch (Exception e){
+                System.out.println(e.toString());
             }
 
-            Address address = new Address(street, suite, city, province, postal, geo);
-
-            Customer customer = new Customer(name, userName, password, email, phone, company, website,"AWAITED", address);
-            userServices.insertCustomer(customer, new UserServices.OperationCallback() {
-                @Override
-                public void onOperationCompleted() {
-                    runOnUiThread(()->Toast.makeText(SignupActivity.this, "Account created!", Toast.LENGTH_SHORT).show());
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    runOnUiThread(()->Toast.makeText(SignupActivity.this, "Account cannot be created!", Toast.LENGTH_SHORT).show());
-                    System.out.println(e.toString());
-                }
-            });
-        }catch (Exception e){
-            System.out.println(e.toString());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Fill in all the Fields", Toast.LENGTH_SHORT).show();
         }
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     private void setValues(){
@@ -104,5 +108,23 @@ public class SignupActivity extends AppCompatActivity {
         city = cityField.getText().toString();
         province = provinceField.getText().toString();
         postal = postalField.getText().toString();
+    }
+
+    private boolean checkAllFields(){
+        if(nameField.getText().toString().isEmpty() ||
+        userNameField.getText().toString().isEmpty()||
+        passwordField.getText().toString().isEmpty()||
+        emailField.getText().toString().isEmpty()||
+        phoneField.getText().toString().isEmpty()||
+        companyField.getText().toString().isEmpty()||
+        websiteField.getText().toString().isEmpty()||
+        suiteField.getText().toString().isEmpty()||
+        streetField.getText().toString().isEmpty()||
+        cityField.getText().toString().isEmpty()||
+        provinceField.getText().toString().isEmpty()||
+        postalField.getText().toString().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

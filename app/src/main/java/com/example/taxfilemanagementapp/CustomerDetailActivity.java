@@ -15,7 +15,6 @@ import java.util.Arrays;
 public class CustomerDetailActivity extends AppCompatActivity {
     TextView nameField;
     TextView userNameField;
-    TextView passwordField;
     TextView phoneField;
     TextView companyField;
     TextView websiteField;
@@ -48,7 +47,6 @@ public class CustomerDetailActivity extends AppCompatActivity {
 
         nameField = findViewById(R.id.customerDetailName);
         userNameField = findViewById(R.id.customerDetailUsername);
-        passwordField = findViewById(R.id.customerDetailPassword);
         emailField = findViewById(R.id.customerDetailEmail);
         phoneField = findViewById(R.id.customerDetailPhone);
         companyField = findViewById(R.id.customerDetailCompanyName);
@@ -104,7 +102,6 @@ public class CustomerDetailActivity extends AppCompatActivity {
     void preLoadField(){
         nameField.setText(String.format("Name: %s", loggedInCustomer.name));
         userNameField.setText(String.format("Username: %s", loggedInCustomer.userName));
-        passwordField.setText(String.format("Password: %s", loggedInCustomer.password));
         emailField.setText(String.format("Email: %s", loggedInCustomer.email));
         phoneField.setText(String.format("Phone: %s", loggedInCustomer.phone));
         companyField.setText(String.format("Company: %s", loggedInCustomer.companyTitle));

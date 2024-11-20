@@ -174,7 +174,6 @@
             android:layout_gravity="end"
             android:onClick="updateCustomer"
             android:text="@string/update"
-            android:textColor="#BBDEFB"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -184,7 +183,6 @@
             android:layout_gravity="end"
             android:onClick="handleLogout"
             android:text="@string/logout"
-            android:textColor="#BBDEFB"
             tools:ignore="ButtonStyle" />
     </LinearLayout>
 
