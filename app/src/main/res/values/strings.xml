@@ -22,4 +22,5 @@
     <string name="back_btn">Back Btn</string>
     <string name="back_to_login_page_btn">back to login page btn</string>
     <string name="update">update</string>
+    <string name="personal_details">Personal Details</string>
 </resources>

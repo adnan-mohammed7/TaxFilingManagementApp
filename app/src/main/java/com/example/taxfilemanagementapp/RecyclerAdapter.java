@@ -1,23 +1,17 @@
 package com.example.taxfilemanagementapp;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private List<Customer> data;
-    Context context;
+    private final List<Customer> data;
+    private final CustomClickHandler customClickHandler;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameView;
@@ -35,9 +29,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
 
-    public RecyclerAdapter(List<Customer> data, Context context) {
+    public RecyclerAdapter(List<Customer> data, CustomClickHandler handler) {
         this.data = data;
-        this.context = context;
+        this.customClickHandler = handler;
     }
 
     // Create new views (invoked by the layout manager)
@@ -53,10 +47,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Customer customer = data.get(position);
-        holder.nameView.setText(customer.name);
-        holder.phoneView.setText(customer.phone);
-        holder.cityView.setText(customer.address.city);
-        holder.statusView.setText(customer.status);
+        holder.nameView.setText(String.format("Name: %s", customer.name));
+        holder.phoneView.setText(String.format("Phone: %s", customer.phone));
+        holder.cityView.setText(String.format("City: %s", customer.address.city));
+        holder.statusView.setText(String.format("Status: %s", customer.status));
 
         switch (customer.status) {
             case "AWAITED":
@@ -78,15 +72,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 holder.itemView.setBackgroundColor(Color.parseColor("#FF0000"));
                 break;
             default:
-                holder.itemView.setBackgroundColor(Color.WHITE);
+                holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
         }
 
         holder.itemView.setOnClickListener(e->{
-            Intent intent = new Intent(context, CustomerDetailActivity.class);
-            intent.putExtra("username", customer.userName);
-            intent.putExtra("position", position);
-            ((AdminHomeActivity) context).startActivityForResult(intent, 1);
+            if(customClickHandler != null){
+                customClickHandler.itemClickHandler(position, customer);
+            }
         });
     }
 
@@ -107,5 +100,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void updateCustomerAtPosition(int pos, Customer customer){
         data.set(pos, customer);
         notifyItemChanged(pos);
+    }
+
+    public interface CustomClickHandler{
+        void itemClickHandler(int pos, Customer customer);
     }
 }

@@ -21,28 +21,4 @@ public class Address {
         this.zipcode = zipcode;
         this.geo = geo;
     }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setSuite(String suite) {
-        this.suite = suite;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public void setGeo(Geo geo) {
-        this.geo = geo;
-    }
 }

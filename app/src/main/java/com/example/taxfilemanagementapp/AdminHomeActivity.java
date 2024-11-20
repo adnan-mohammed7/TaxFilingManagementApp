@@ -2,16 +2,13 @@ package com.example.taxfilemanagementapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,20 +32,32 @@ public class AdminHomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(AdminHomeActivity.this));
 
         logoutBtn = findViewById(R.id.adminlogoutBtn);
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        logoutBtn.setOnClickListener(e->{
+            Intent intent = new Intent(AdminHomeActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
-        userServices.getAllCustomers(customers -> {
-            runOnUiThread(()->{
-                adapter = new RecyclerAdapter(customers, this);
-                recyclerView.setAdapter(adapter);
-            });
-        });
+        ActivityResultLauncher<Intent> customerDetailLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), result ->{
+                    if(result.getResultCode() == RESULT_OK){
+                        Intent data = result.getData();
+                        if (data != null){
+                            userServices.getCustomerById(data.getIntExtra("id", -1),
+                                    e-> runOnUiThread(()->
+                                            adapter.updateCustomerAtPosition(data.getIntExtra("position", -1), e)));
+                        }
+                    }
+                }
+        );
+
+        userServices.getAllCustomers(customers -> runOnUiThread(()->{
+            adapter = new RecyclerAdapter(customers, (position, customer) -> {
+                Intent intent = new Intent(this, CustomerDetailActivity.class);
+                intent.putExtra("username", customer.userName);
+                intent.putExtra("position", position);
+                customerDetailLauncher.launch(intent);});
+            recyclerView.setAdapter(adapter);
+        }));
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -64,40 +73,25 @@ public class AdminHomeActivity extends AppCompatActivity {
                 new AlertDialog.Builder(AdminHomeActivity.this)
                         .setTitle("Confirm Delete")
                         .setMessage("Are you sure you want to delete this customer")
-                        .setPositiveButton("Yes", ((dialog, which) -> {
-                            userServices.deleteCustomer(removeCustomer, new UserServices.OperationCallback() {
-                                @Override
-                                public void onOperationCompleted() {
-                                    runOnUiThread(()-> {
-                                        Toast.makeText(AdminHomeActivity.this, "Customer Deleted!", Toast.LENGTH_SHORT).show();
-                                        adapter.removeCustomerAtPosition(pos);
-                                        adapter.notifyItemRemoved(pos);
-                                    });
-                                }
+                        .setPositiveButton("Yes", ((dialog, which) -> userServices.deleteCustomer(removeCustomer, new UserServices.OperationCallback() {
+                            @Override
+                            public void onOperationCompleted() {
+                                runOnUiThread(()-> {
+                                    Toast.makeText(AdminHomeActivity.this, "Customer Deleted!", Toast.LENGTH_SHORT).show();
+                                    adapter.removeCustomerAtPosition(pos);
+                                    adapter.notifyItemRemoved(pos);
+                                });
+                            }
 
-                                @Override
-                                public void onError(Exception e) {
-                                    System.out.println(e.toString());
-                                }
-                            });}))
-                        .setNegativeButton("No", ((dialog, which) -> {
-                            adapter.notifyItemChanged(pos);
-                        }))
+                            @Override
+                            public void onError(Exception e) {
+                                System.out.println(e.toString());
+                            }
+                        })))
+                        .setNegativeButton("No", ((dialog, which) -> adapter.notifyItemChanged(pos)))
                         .show();
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            userServices.getCustomerById(data.getIntExtra("id", -1), e->{
-                runOnUiThread(()->{
-                    adapter.updateCustomerAtPosition(data.getIntExtra("position", -1), e);
-                });
-            });
-        }
     }
 }

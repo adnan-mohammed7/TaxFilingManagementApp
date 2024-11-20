@@ -1,25 +1,16 @@
 package com.example.taxfilemanagementapp;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.Consumer;
 
 public class CustomerDetailActivity extends AppCompatActivity {
     TextView nameField;
@@ -69,8 +60,8 @@ public class CustomerDetailActivity extends AppCompatActivity {
         postalField = findViewById(R.id.customerDetailPostal);
         statusView = findViewById(R.id.customerDetailStatus);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusOptions);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, statusOptions);
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         statusView.setAdapter(arrayAdapter);
 
@@ -78,15 +69,10 @@ public class CustomerDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getIntExtra("position", -1);
 
-        userServices.getCustomerByUsername(intent.getStringExtra("username"), new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                runOnUiThread(()->{
-                    loggedInCustomer = customer;
-                    preLoadField();
-                });
-            }
-        });
+        userServices.getCustomerByUsername(intent.getStringExtra("username"), customer -> runOnUiThread(()->{
+            loggedInCustomer = customer;
+            preLoadField();
+        }));
     }
 
     public void updateCustomer(View view) {
@@ -116,19 +102,19 @@ public class CustomerDetailActivity extends AppCompatActivity {
     }
 
     void preLoadField(){
-        nameField.setText(loggedInCustomer.name);
-        userNameField.setText(loggedInCustomer.userName);
-        passwordField.setText(loggedInCustomer.password);
-        emailField.setText(loggedInCustomer.email);
-        phoneField.setText(loggedInCustomer.phone);
-        companyField.setText(loggedInCustomer.companyTitle);
-        websiteField.setText(loggedInCustomer.website);
-        suiteField.setText(loggedInCustomer.address.suite);
-        streetField.setText(loggedInCustomer.address.street);
-        cityField.setText(loggedInCustomer.address.city);
-        provinceField.setText(loggedInCustomer.address.province);
-        postalField.setText(loggedInCustomer.address.zipcode);
-        int pos = new ArrayList<String>(Arrays.asList(statusOptions)).indexOf(loggedInCustomer.status);
+        nameField.setText(String.format("Name: %s", loggedInCustomer.name));
+        userNameField.setText(String.format("Username: %s", loggedInCustomer.userName));
+        passwordField.setText(String.format("Password: %s", loggedInCustomer.password));
+        emailField.setText(String.format("Email: %s", loggedInCustomer.email));
+        phoneField.setText(String.format("Phone: %s", loggedInCustomer.phone));
+        companyField.setText(String.format("Company: %s", loggedInCustomer.companyTitle));
+        websiteField.setText(String.format("Website: %s", loggedInCustomer.website));
+        suiteField.setText(String.format("Suite: %s", loggedInCustomer.address.suite));
+        streetField.setText(String.format("Street: %s", loggedInCustomer.address.street));
+        cityField.setText(String.format("City: %s", loggedInCustomer.address.city));
+        provinceField.setText(String.format("Province: %s", loggedInCustomer.address.province));
+        postalField.setText(String.format("Postal Code: %s", loggedInCustomer.address.zipcode));
+        int pos = new ArrayList<>(Arrays.asList(statusOptions)).indexOf(loggedInCustomer.status);
         statusView.setSelection(pos);
     }
 

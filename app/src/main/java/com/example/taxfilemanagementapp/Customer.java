@@ -48,10 +48,6 @@ public class Customer implements Serializable{
         this.password = password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }

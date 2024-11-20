@@ -32,13 +32,14 @@
         android:autofillHints=""
         android:hint="@string/password"
         android:inputType="textPassword"
-        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/userSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/admin" />
+        android:text="@string/admin"
+        tools:ignore="VisualLintButtonSize" />
 
     <LinearLayout
         android:layout_width="match_parent"

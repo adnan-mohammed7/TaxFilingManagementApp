@@ -69,7 +69,7 @@ public class UserServices {
                     onResult.accept(list);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }
@@ -82,7 +82,7 @@ public class UserServices {
                     onResult.accept(result);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }
@@ -95,7 +95,7 @@ public class UserServices {
                     onResult.accept(result);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }
@@ -153,7 +153,7 @@ public class UserServices {
                     onResult.accept(result);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }
@@ -166,7 +166,7 @@ public class UserServices {
                     onResult.accept(result);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }
@@ -179,7 +179,7 @@ public class UserServices {
                     onResult.accept(result);
                 }
             }catch(Exception e){
-
+                //
             }
         }).start();
     }

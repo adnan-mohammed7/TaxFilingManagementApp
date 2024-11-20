@@ -5,19 +5,12 @@ import android.graphics.Color;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class CustomerHomeActivity extends AppCompatActivity {
     EditText nameField;
@@ -60,16 +53,11 @@ public class CustomerHomeActivity extends AppCompatActivity {
         userServices = UserServices.getInstance(this);
         Intent intent = getIntent();
 
-        userServices.getCustomerByUsername(intent.getStringExtra("username"), new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                runOnUiThread(()->{
-                    loggedInCustomer = customer;
-                    status = loggedInCustomer.status;
-                    preLoadField();
-                });
-            }
-        });
+        userServices.getCustomerByUsername(intent.getStringExtra("username"), customer -> runOnUiThread(()->{
+            loggedInCustomer = customer;
+            status = loggedInCustomer.status;
+            preLoadField();
+        }));
     }
 
     public void handleLogout(View view) {
@@ -116,6 +104,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
                 }
             });
         }catch (Exception e){
+            //noinspection UnnecessaryToStringCall
             System.out.println(e.toString());
         }
 
@@ -142,7 +131,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         nameField.setText(loggedInCustomer.name);
         userNameField.setText(loggedInCustomer.userName);
         passwordField.setText(loggedInCustomer.password);
-        emailField.setText(loggedInCustomer.email);
+        emailField.setText(String.format("Email: %s", loggedInCustomer.email));
         phoneField.setText(loggedInCustomer.phone);
         companyField.setText(loggedInCustomer.companyTitle);
         websiteField.setText(loggedInCustomer.website);
@@ -151,7 +140,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         cityField.setText(loggedInCustomer.address.city);
         provinceField.setText(loggedInCustomer.address.province);
         postalField.setText(loggedInCustomer.address.zipcode);
-        statusView.setText(loggedInCustomer.status);
+        statusView.setText(String.format("Status: %s", loggedInCustomer.status));
 
         switch (loggedInCustomer.status) {
             case "AWAITED":

@@ -13,46 +13,62 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_details"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/customerDetailName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailCompanyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -67,46 +83,44 @@
         android:id="@+id/customerDetailSuite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailStreet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailProvince"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/customerDetailPostal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textSize="20sp"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/customerDetailStatus"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textSize="20sp"-->
-<!--        android:gravity="start"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:textStyle="bold" />-->
 
     <Spinner
         android:id="@+id/customerDetailStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:minHeight="48dp" />
 
 
     <LinearLayout
@@ -123,7 +137,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/update" />
+            android:text="@string/update"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

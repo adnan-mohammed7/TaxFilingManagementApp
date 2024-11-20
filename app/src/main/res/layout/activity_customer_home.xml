@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -12,28 +11,36 @@
         android:id="@+id/customerHomeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomeUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/username"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <TextView
         android:id="@+id/customerHomeEmail"
@@ -47,28 +54,35 @@
         android:id="@+id/customerHomePhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/phone"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomeCompanyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/company_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomeWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/website"
-        android:inputType="textUri" />
+        android:inputType="textUri"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <TextView
         android:layout_width="match_parent"
@@ -83,46 +97,57 @@
         android:id="@+id/customerHomeSuite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/suite"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomeStreet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/street"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomeCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/city"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomesProvince"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/province"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/customerHomePostal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:layout_margin="5dp"
+        android:autofillHints=""
         android:hint="@string/postal_code"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <TextView
         android:id="@+id/customerHomeStatus"
@@ -144,19 +169,23 @@
 
         <Button
             android:id="@+id/customerHomeUpdateBtn"
-            android:onClick="updateCustomer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/update" />
+            android:onClick="updateCustomer"
+            android:text="@string/update"
+            android:textColor="#BBDEFB"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/customerHomeLogoutBtn"
-            android:onClick="handleLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/logout" />
+            android:onClick="handleLogout"
+            android:text="@string/logout"
+            android:textColor="#BBDEFB"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
