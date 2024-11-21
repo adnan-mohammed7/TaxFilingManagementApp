@@ -111,20 +111,17 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private boolean checkAllFields(){
-        if(nameField.getText().toString().isEmpty() ||
-        userNameField.getText().toString().isEmpty()||
-        passwordField.getText().toString().isEmpty()||
-        emailField.getText().toString().isEmpty()||
-        phoneField.getText().toString().isEmpty()||
-        companyField.getText().toString().isEmpty()||
-        websiteField.getText().toString().isEmpty()||
-        suiteField.getText().toString().isEmpty()||
-        streetField.getText().toString().isEmpty()||
-        cityField.getText().toString().isEmpty()||
-        provinceField.getText().toString().isEmpty()||
-        postalField.getText().toString().isEmpty()){
-            return false;
-        }
-        return true;
+        return !nameField.getText().toString().isEmpty() &&
+                !userNameField.getText().toString().isEmpty() &&
+                !passwordField.getText().toString().isEmpty() &&
+                !emailField.getText().toString().isEmpty() &&
+                !phoneField.getText().toString().isEmpty() &&
+                !companyField.getText().toString().isEmpty() &&
+                !websiteField.getText().toString().isEmpty() &&
+                !suiteField.getText().toString().isEmpty() &&
+                !streetField.getText().toString().isEmpty() &&
+                !cityField.getText().toString().isEmpty() &&
+                !provinceField.getText().toString().isEmpty() &&
+                !postalField.getText().toString().isEmpty();
     }
 }

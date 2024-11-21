@@ -107,10 +107,6 @@ public class CustomerHomeActivity extends AppCompatActivity {
             //noinspection UnnecessaryToStringCall
             System.out.println(e.toString());
         }
-
-        Intent intent = new Intent(this, CustomerHomeActivity.class);
-        intent.putExtra("username", loggedInCustomer.userName);
-        startActivity(intent);
     }
 
     private void setValues(){

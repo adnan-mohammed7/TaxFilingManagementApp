@@ -13,8 +13,7 @@ public class UserServices {
     private final AdminDao adminDao;
 
     private UserServices(Context context){
-        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "taxdb")
-                .fallbackToDestructiveMigration().build();
+        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "taxdb").build();
         userDao = db.userDao();
         adminDao = db.adminDao();
     }
