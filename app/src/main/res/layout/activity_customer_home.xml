@@ -1,189 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".CustomerHomeActivity">
-
-    <EditText
-        android:id="@+id/customerHomeName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/name"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomeUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/username"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomePassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <TextView
-        android:id="@+id/customerHomeEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:layout_margin="5dp"
-        android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/customerHomePhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/phone"
-        android:inputType="phone"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomeCompanyName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/company_name"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomeWebsite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/website"
-        android:inputType="textUri"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/address"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/customerHomeSuite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/suite"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomeStreet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/street"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomeCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/city"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomesProvince"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/province"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/customerHomePostal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:autofillHints=""
-        android:hint="@string/postal_code"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <TextView
-        android:id="@+id/customerHomeStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:gravity="start"
-        android:layout_margin="5dp"
-        android:textStyle="bold" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="15dp"
-        android:gravity="end"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/customerHomeUpdateBtn"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/customerHomeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/name"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomeUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/username"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/customerHomeEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:layout_margin="5dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/customerHomePhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomeCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/company_name"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomeWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/website"
+            android:inputType="textUri"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/customerHomeSuite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/suite"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomeStreet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/street"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomeCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/city"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomesProvince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/province"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/customerHomePostal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints=""
+            android:hint="@string/postal_code"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/customerHomeStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="start"
+            android:layout_margin="5dp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:onClick="updateCustomer"
-            android:text="@string/update"
-            tools:ignore="ButtonStyle" />
+            android:layout_marginTop="15dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/customerHomeLogoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:onClick="handleLogout"
-            android:text="@string/logout"
-            tools:ignore="ButtonStyle" />
+            <Button
+                android:id="@+id/customerHomeUpdateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:onClick="updateCustomer"
+                android:text="@string/update"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/customerHomeLogoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:onClick="handleLogout"
+                android:text="@string/logout"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+
     </LinearLayout>
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

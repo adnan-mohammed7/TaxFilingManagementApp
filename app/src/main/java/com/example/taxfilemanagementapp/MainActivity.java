@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         userSwitch = findViewById(R.id.userSwitch);
         userNameField = findViewById(R.id.userNameField);
         passwordField = findViewById(R.id.passwordField);
+        userServices.getAllAdmins(admins -> {
+            if(admins.isEmpty())
+                addAdmin();
+        });
     }
 
     public void handleSignup(View view) {
@@ -69,5 +73,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    void addAdmin(){
+        Admin newAdmin = new Admin("Adnan", "Seneca123");
+        userServices.insertAdmin(newAdmin, new UserServices.OperationCallback() {
+            @Override
+            public void onOperationCompleted() {
+                //
+            }
+
+            @Override
+            public void onError(Exception e) {
+                //
+            }
+        });
     }
 }
